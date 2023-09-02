@@ -592,8 +592,27 @@
   <!--==================== MAIN JS ====================-->
   <script src="assets/js/main.js"></script>
 
-  <!-- translate JS -->
+  <!-- Translate JS -->
   <script src="assets/js/cn-en-translate.js"></script>
+
+  <!-- Typing JS -->
+  <script>
+    const titleElement = document.querySelector('.home__title');
+    const text = titleElement.innerText;
+    titleElement.innerText = ''; // 清空原始文本内容
+
+    let index = 0;
+    const interval = setInterval(() => {
+      titleElement.innerText = text.slice(0, index); // 逐个添加字母
+      index++;
+
+      if (index > text.length) {
+        clearInterval(interval); // 停止定时器
+        titleElement.classList.add('cursor-blink'); // 添加闪烁光标的类名
+      }
+    }, 150); // 每个字母的显示间隔时间（以毫秒为单位）
+  </script>
+
 </body>
 
 </html>
